@@ -1,27 +1,75 @@
 vim.g.mapleader = " "
 
 local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
 
-map("n", "<leader>q", function() vim.cmd("q") end)					-- Exit Vim
-map("n", "<leader>e", function() vim.cmd("Ex") end)					-- Explorer
-map("n", "<leader><leader>", function() vim.cmd("so") end)	-- Source File
-map("n", "<leader>li", function()	vim.cmd("Lazy") end)			-- Lazy Installer
+-- Vim Functions
+map("n", "<leader>q", function() vim.cmd("q") end, { desc = "[Q]uit" })
+map("n", "<leader><leader>", function() vim.cmd("w") end, { desc = "Save" })
+map("n", "so", function() vim.cmd("so") end, { desc = "[so]urce" })
+map("n", "<leader>li", function()	vim.cmd("Lazy") end, { desc = "LazyInstaller" })
 
--- Moving single line
+-- Moving single line (Does not work om MacOS)
 map('n', "<A-w>", function() vim.cmd("m -2") end)
 map('n', "<A-s>", function() vim.cmd("m +1") end)
+-- MacOS
+map('n', "ß", function() vim.cmd("m +1") end)
+map('n', "∑", function() vim.cmd("m -2") end)
 
 -- Duplicate single line
 map('n', "<A-S>", "yyp")
 map('n', "<A-W>", "yykp")
+-- MacOS
+map('n', "Í", "yyp")
+map('n', "„", "yykp")
 
--- Moving multiple lines
+-- Moving multiple lines (in development)
 -- map('v', "<A-Up>", function() vim.cmd("m -2") end)
 -- map('v', "<A-Down>", function() vim.cmd("m +1") end)
 
---Telescope
-map("n", "<leader>ff", "<cmd>Telescope find_files<CR>")	-- Find Files
-map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>") 	-- Find a string
-map("n", "<leader>fb", "<cmd>Telescope buffers<CR>")		-- Find Buffers
-map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>")	-- Help
-map("n", "<leader>fk", "<cmd>Telescope keymaps<CR>")		-- Find keymaps
+-- New tab
+map('n', "te", ":tabedit")
+map('n', "<tab>", ":tabnext<Return>", opts)
+map('n', "<s-tab>", ":tabprev<Return>", opts)
+map('n', "tt", ":tabclose")
+-- Split window
+map('n', "ss", ":split<Return>", opts)
+map('n', "sv", ":vsplit<Return>", opts)
+-- Move window
+map('n', "sh", "<C-w>h")
+map('n', "sk", "<C-w>k")
+map('n', "sj", "<C-w>j")
+map('n', "sl", "<C-w>l")
+
+map("n", '<leader>ff', function()
+	vim.cmd("lua require('telescope.builtin').find_files({no_ignore = false, hidden = true})")
+end)
+map("n", '<leader>fg', function()
+	vim.cmd("lua require('telescope.builtin').live_grep()")
+end)
+map("n", '<leader>fb', function()
+	vim.cmd("lua require('telescope.builtin').buffers()")
+end)
+map("n", '<leader>ft', function()
+	vim.cmd("lua require('telescope.builtin').help_tags()")
+end)
+map("n", '<leader>fr', function()
+	vim.cmd("lua require('telescope.builtin').resume()")
+end)
+map("n", '<leader>fd', function()
+	vim.cmd("lua require('telescope.builtin').diagnostics()")
+end)
+map("n", '<leader>sf', function()
+	vim.cmd("lua require('telescope').extensions.file_browser.file_browser({ path = '%:p:h', cwd = telescope_buffer_dir(), respect_git_ignore = false, hidden = true, grouped = true, previewer = true, initial_mode = 'insert', layout_config = { height = 40 } })")
+end)
+
+-- map("n", '<leader>d', vim.diagnostic.open_float)
+-- map("n", '[d', vim.diagnostic.goto_prev)
+-- map("n", ']d', vim.diagnostic.goto_next)
+-- map("n", '<leader>ll', vim.diagnostic.setloclist)
+
+-- Laravel
+map("n", '<leader>la', ":Laravel artisan<cr>")
+map("n", '<leader>lr', ":Laravel routes<cr>")
+map("n", '<leader>lm', ":Laravel related<cr>")
+
