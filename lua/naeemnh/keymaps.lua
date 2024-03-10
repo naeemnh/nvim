@@ -27,6 +27,9 @@ map('n', "„", "yykp")
 -- map('v', "<A-Up>", function() vim.cmd("m -2") end)
 -- map('v', "<A-Down>", function() vim.cmd("m +1") end)
 
+-- Deleting Line (wihtout adding to copying)
+map('n', "dd", '"_dd')
+
 -- New tab
 map('n', "te", ":tabedit")
 map('n', "<tab>", ":tabnext<Return>", opts)
