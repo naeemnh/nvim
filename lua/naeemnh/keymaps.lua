@@ -44,6 +44,7 @@ map('n', "sk", "<C-w>k")
 map('n', "sj", "<C-w>j")
 map('n', "sl", "<C-w>l")
 
+-- Telescope
 map("n", '<leader>ff', function()
 	vim.cmd("lua require('telescope.builtin').find_files({no_ignore = false, hidden = true})")
 end, { desc = "[F]ind"})
@@ -76,3 +77,8 @@ map("n", '<leader>la', ":Laravel artisan<cr>", { desc = "Laravel [A]rtisan" })
 map("n", '<leader>lr', ":Laravel routes<cr>", { desc = "Laravel [R]outes" })
 map("n", '<leader>lm', ":Laravel related<cr>", { desc = "Laravel Related" })
 
+-- View Motions
+map("n", '<C-d>', "<C-d>zz")
+map("n", '<C-u>', "<C-u>zz")
+map("n", 'n', "nzzzv")
+map("n", 'N', "Nzzzv")
