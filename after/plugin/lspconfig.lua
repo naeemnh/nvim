@@ -82,7 +82,7 @@ local servers = {
   -- pyright = {},
   -- rust_analyzer = {},
   tsserver = {},
-  html = { filetypes = { 'html' } },
+  html = { filetypes = { 'html', 'tsx', 'jsx', 'js' } },
   phpactor = {},
 
   lua_ls = {
