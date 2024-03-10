@@ -18,23 +18,35 @@ end
 
 lazy.setup({
   "jose-elias-alvarez/null-ls.nvim",
-	'rebelot/kanagawa.nvim',
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
   "lewis6991/gitsigns.nvim",
+
+  {
+    "kdheepak/lazygit.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+
   -- Set Lualine as statusline
   "nvim-lualine/lualine.nvim",
+
+  -- Themes
+	'rebelot/kanagawa.nvim',
 	{
 		"folke/tokyonight.nvim",
 		enabled = false,
 		lazy = true,
 		priority = 1000
 	},
+
 	{
 		"windwp/nvim-autopairs",
     event = "InsertEnter",
     opts = {}, -- this is equivalent to setup({})
   },
+
   {
     -- LSP Configurations & Plugins
     "neovim/nvim-lspconfig",
@@ -50,6 +62,7 @@ lazy.setup({
       "folke/neodev.nvim",
     },
   },
+
   {
     -- Autocompletion
     "hrsh7th/nvim-cmp",
@@ -68,10 +81,12 @@ lazy.setup({
       { "onsails/lspkind.nvim", lazy = true }
     },
   },
+
   {
     "folke/which-key.nvim",
     opts = {}
   },
+
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
@@ -79,6 +94,7 @@ lazy.setup({
     },
     build = ":TSUpdate",
   },
+
   {
     "nvim-telescope/telescope-file-browser.nvim",
     dependencies = {
@@ -92,6 +108,7 @@ lazy.setup({
       "nvim-lua/plenary.nvim",
     },
   },
+
   {
     "adalessa/laravel.nvim",
     dependencies = {
@@ -103,18 +120,26 @@ lazy.setup({
     cmd = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" },
     event = { "VeryLazy" },
     config = true,
+    features = {
+      null_ls = {
+        enable = false,
+      }
+    }
   },
+
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     opts = {},
   },
+
   {
     "kevinhwang91/nvim-ufo",
     dependencies = {
       "kevinhwang91/promise-async",
     },
   },
+
   {
     'numToStr/Comment.nvim',
     opts = {},
