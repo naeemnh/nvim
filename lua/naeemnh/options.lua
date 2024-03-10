@@ -59,3 +59,4 @@ opt.signcolumn = "yes"
 opt.scrolloff = 8
 opt.updatetime = 50
 opt.colorcolumn = "80"
+opt.textwidth = 80
