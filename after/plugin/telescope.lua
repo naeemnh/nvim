@@ -1,6 +1,6 @@
 local ok, telescope = pcall(require, "telescope")
 if not ok then return end
-local actions = require('telescope.actions')
+--- local actions = require('telescope.actions')
 
 function telescope_buffer_dir()
 	return vim.fn.expand('%:p:h')
@@ -15,7 +15,7 @@ telescope.setup({
 			".yarn/*",
 			".git/*",
 			".idea/*",
-		},		
+		},
 	},
 	extensions = {
 		file_browser = {
