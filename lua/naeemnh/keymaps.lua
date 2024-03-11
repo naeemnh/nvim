@@ -23,6 +23,9 @@ map('n', "<A-W>", "yykp")
 map('n', "Í", "yyp")
 map('n', "„", "yykp")
 
+
+map('n', "U", "<C-r>") -- redo
+
 -- Moving multiple lines (in development)
 -- map('v', "<A-Up>", function() vim.cmd("m -2") end)
 -- map('v', "<A-Down>", function() vim.cmd("m +1") end)
