@@ -55,3 +55,8 @@ opt.showcmd = true
 opt.inccommand = "split"
 opt.cmdheight = 1
 opt.laststatus = 2
+
+opt.foldcolumn = "1"
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldenable = true
