@@ -14,10 +14,14 @@ map("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
 map("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
 
 -- Window Management
-map("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
-map("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
-map("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
-map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
+map("n", "sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
+map("n", "ss", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
+map("n", "se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
+map("n", "sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
+map("n", "sh", "<C-w>h")
+map("n", "sj", "<C-w>j")
+map("n", "sk", "<C-w>k")
+map("n", "sl", "<C-w>l")
 
 -- Tab Management
 map("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
