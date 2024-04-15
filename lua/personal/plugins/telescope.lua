@@ -8,6 +8,13 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-file-browser.nvim",
+		{
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make",
+			cond = function()
+				return vim.fn.executable("make") == 1
+			end,
+		},
 		"nvim-tree/nvim-web-devicons",
 		"folke/todo-comments.nvim",
 	},
@@ -70,10 +77,14 @@ return {
 				find_files = {
 					theme = "dropdown",
 				},
+				fzf = {
+					theme = "dropdown",
+				},
 			},
 		})
 
 		telescope.load_extension("file_browser")
+		telescope.load_extension("fzf")
 
 		-- set keymaps
 		local map = vim.keymap.set -- for conciseness
@@ -88,5 +99,10 @@ return {
 				"lua require('telescope').extensions.file_browser.file_browser({ path = '%:p:h', cwd = telescope_buffer_dir(), respect_git_ignore = false, hidden = true, grouped = true, previewer = true, initial_mode = 'insert', layout_config = { height = 40 }})"
 			)
 		end, { desc = "Browse search file in current file directory" })
+		map("n", "<leader>/", function()
+			vim.cmd(
+				"lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({winblend = 10, previewer = false}))"
+			)
+		end, { desc = "[/] Fuzzily search in current buffer" })
 	end,
 }
