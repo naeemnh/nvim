@@ -34,15 +34,15 @@ map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new
 map("n", "<A-w>", "<cmd>m -2<CR>", { desc = "Move line up" })
 map("n", "<A-s>", "<cmd>m +1<CR>", { desc = "Move line down" })
 -- MacOS
-map("n", "ß", "<cmd>m -2<CR>", { desc = "Mac: Move line up" })
-map("n", "∑", "<cmd>m +1<CR>", { desc = "Mac: Move line down" })
+map("n", "∑", "<cmd>m -2<CR>", { desc = "Mac: Move line up" })
+map("n", "ß", "<cmd>m +1<CR>", { desc = "Mac: Move line down" })
 
 -- Duplicate single line
 map("n", "<A-S>", "yyp")
 map("n", "<A-W>", "yykp")
 -- MacOS
-map("n", "Í", "yyp")
 map("n", "„", "yykp")
+map("n", "Í", "yyp")
 
 -- Delete line without adding to register
 map("n", "dd", '"_dd')
