@@ -42,7 +42,7 @@ return {
 					".git/*",
 					".idea/*",
 				},
-				path_display = { "smart" },
+				-- path_display = { "smart" },
 				mappings = {
 					i = {
 						["<C-k>"] = actions.move_selection_previous, -- move to prev result
