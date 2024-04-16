@@ -43,6 +43,11 @@ return {
 				["<C-e>"] = cmp.mapping.abort(), -- close completion window
 				["<CR>"] = cmp.mapping.confirm({ select = false }),
 			}),
+			window = {
+				documentation = {
+					border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+				},
+			},
 			-- sources for autocompletion
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
