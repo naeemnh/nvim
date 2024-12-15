@@ -13,12 +13,13 @@ opt.number = true
 -- Tabs & indentation
 opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
 opt.shiftwidth = 2 -- 2 spaces for indent width
-opt.expandtab = true -- expand tab to spaces
+opt.expandtab = true -- Expand tab to spaces or keep tabs
 opt.autoindent = true -- Copy indent from current line when starting new one
 opt.smartindent = true
 opt.breakindent = true
 
 opt.wrap = false
+opt.fixeol = true
 
 -- Search settings
 opt.ignorecase = true -- Ignore case when searching
