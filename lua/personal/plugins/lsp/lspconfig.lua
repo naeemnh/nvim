@@ -125,6 +125,19 @@ return {
 					},
 				})
 			end,
+			["cssls"] = function()
+				-- Configure css language server
+				lspconfig["cssls"].setup({
+					capabilities = capabilities,
+					settings = {
+						css = {
+							lint = {
+								unknownAtRules = "ignore",
+							},
+						},
+					},
+				})
+			end,
 		})
 	end,
 }
