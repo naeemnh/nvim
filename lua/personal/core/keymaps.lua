@@ -30,19 +30,29 @@ map("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  Go to n
 map("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  Go to previous tab
 map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  Move current buffer to new tab
 
--- Moving single line (Does not work om MacOS)
+-- Moving single line
+-- WinOS
 map("n", "<A-w>", "<cmd>m -2<CR>", { desc = "Move line up" })
 map("n", "<A-s>", "<cmd>m +1<CR>", { desc = "Move line down" })
+map("v", "<A-w>", ":m '<-2<CR>gv=gv", { desc = "Move selected line(s) up" })
+map("v", "<A-s>", ":m '>+1<CR>gv=gv", { desc = "Move selected line(s) down" })
 -- MacOS
 map("n", "∑", "<cmd>m -2<CR>", { desc = "Mac: Move line up" })
 map("n", "ß", "<cmd>m +1<CR>", { desc = "Mac: Move line down" })
+map("v", "∑", ":m '<-2<CR>gv=gv", { desc = "Mac: Move selected line(s) up" })
+map("v", "ß", ":m '>+1<CR>gv=gv", { desc = "Mac: Move selected line(s) down" })
 
 -- Duplicate single line
-map("n", "<A-S>", "yyp")
-map("n", "<A-W>", "yykp")
+-- WinOS
+map("n", "<A-S>", "yyp") -- Duplicate Up
+map("n", "<A-W>", "yykp") -- Duplicate Down
 -- MacOS
-map("n", "„", "yykp")
-map("n", "Í", "yyp")
+map("n", "„", "yykp") -- Duplicate Up
+map("n", "Í", "yyp") -- Duplicate Down
+
+-- Duplicate multiple lines
+-- WinOS
+-- MacOS
 
 -- Delete line without adding to register
 map("n", "dd", '"_dd')
