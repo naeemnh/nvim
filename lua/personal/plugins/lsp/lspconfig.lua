@@ -5,6 +5,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", opts = {} },
+		"simrat39/rust-tools.nvim",
 	},
 	config = function()
 		-- Import lspconfig plugin
@@ -15,6 +16,9 @@ return {
 
 		-- Import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+		-- Import rust-tools plugin
+		local rust_tools = require("rust-tools")
 
 		local map = vim.keymap.set -- For conciseness
 
@@ -134,6 +138,56 @@ return {
 							lint = {
 								unknownAtRules = "ignore",
 							},
+						},
+					},
+				})
+			end,
+			["rust_analyzer"] = function()
+				-- Configure rust language server with rust-tools
+				lspconfig["rust_analyzer"].setup({
+					server = {
+						capabilities = capabilities,
+						cmd = { "rust-analyzer" }, -- Ensure this points to the correct binary
+						settings = {
+							["rust-analyzer"] = {
+								imports = {
+									granularity = {
+										group = "module",
+									},
+									prefix = "self",
+								},
+								cargo = {
+									buildScripts = {
+										enable = true,
+									},
+									allFeatures = true,
+									command = "clippy",
+									extraArgs = { "--no-deps" },
+								},
+								procMacro = {
+									enable = true,
+									["async-trait"] = { "async_trait" },
+									["napi-derive"] = { "napi" },
+									["async-recursion"] = { "async_recursion" },
+								},
+							},
+						},
+					},
+					tools = {
+						inlay_hints = {
+							auto = true,
+							only_current_line = false,
+							show_parameter_hints = true,
+							parameter_hints_prefix = "<- ",
+							other_hints_prefix = "=> ",
+							max_len_align = false,
+							max_len_align_padding = 1,
+							right_align = false,
+							right_align_padding = 4,
+							highlight = "Comment",
+						},
+						hover_actions = {
+							auto_focus = true,
 						},
 					},
 				})
